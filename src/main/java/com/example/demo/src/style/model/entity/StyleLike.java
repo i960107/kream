@@ -1,0 +1,47 @@
+package com.example.demo.src.style.model.entity;
+
+import com.example.demo.config.BaseTimeEntity;
+import com.example.demo.config.Status;
+import com.example.demo.src.user.model.entity.User;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
+@Getter
+@NoArgsConstructor
+@Entity
+@Table(name = "style_like")
+public class StyleLike extends BaseTimeEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idx;
+
+    @ManyToOne
+    @JoinColumn(name="userIdx")
+    private User user;
+
+    @NotNull
+    @Column(name="styleIdx", columnDefinition = "int unsigned", nullable = false)
+    private Long styleIdx;
+
+    @NotNull
+    @Column(name = "status", columnDefinition = "varchar(10)", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+    @Builder
+    public StyleLike(Long idx, User user, Long styleIdx, Status status) {
+        this.idx = idx;
+        this.user = user;
+        this.styleIdx = styleIdx;
+        this.status = status;
+    }
+
+    public StyleLike updateStatus(Status status){
+        this.status = status;
+        return this;
+    }
+}

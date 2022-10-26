@@ -1,0 +1,77 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+compileJava.options.encoding = 'UTF-8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // Spring Boot Starter
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+    // Lombok
+    implementation('org.projectlombok:lombok')
+    compileOnly('org.projectlombok:lombok:1.18.16')
+    annotationProcessor('org.projectlombok:lombok:1.18.16')
+
+    // DB
+    runtimeOnly('mysql:mysql-connector-java') //mysql8
+    //runtimeOnly 'mysql:mysql-connector-java:5.1.47' //mysql5
+    compile('org.springframework.boot:spring-boot-starter-data-jpa') //mysql 5버전의 경우 삭제.
+
+    //spring security
+    compile('org.springframework.boot:spring-boot-starter-oauth2-client')
+
+
+    // Web
+    implementation('org.springframework.boot:spring-boot-starter-web')
+
+    // Security, Authentication
+    implementation('org.springframework.boot:spring-boot-starter-security')
+    compile(group: 'io.jsonwebtoken', name: 'jjwt', version: '0.7.0')
+    compile('io.jsonwebtoken:jjwt:0.9.0')
+
+    implementation('org.springframework.boot:spring-boot-starter')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-mustache')
+    compile('org.springframework.boot:spring-boot-starter-validation')
+
+    //문자
+    compile group: 'net.nurigo', name: 'javaSDK', version: '2.2'
+    //sentry
+    implementation 'io.sentry:sentry-spring-boot-starter:5.0.1'
+    implementation 'io.sentry:sentry-logback:5.0.1'
+
+    //redis
+    compile('org.springframework.boot:spring-boot-starter-data-redis')
+
+    //s3
+    implementation group: 'org.springframework.cloud', name: 'spring-cloud-starter-aws', version: '2.2.1.RELEASE'
+
+}
+
+test {
+    useJUnitPlatform()
+}
+bootBuildImage {
+    imageName = "i960107/rp3-kream"
+
+}
