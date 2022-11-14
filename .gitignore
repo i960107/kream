@@ -5,6 +5,9 @@ src/main/java/com/example/demo/config/secret/
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
+#IDEA
+.DS_Store
+
 # Package Files #
 *.jar
 *.war
