@@ -32,4 +32,4 @@
 
 ## 💫 API 명세. 
 + 총 52개 API 구현 및 서버 반영
-+ [API 명세서 보러 가기](https://docs.google.com/spreadsheets/d/14d4X2pVtZcSnpmvdMi8ux_0Voq2GrwHcsQDvc0wDPpk/edit#gid=1734576621)
++ [API 명세서 보러 가기](https://docs.google.com/spreadsheets/d/1m8Sab7yxR_N4J4VQIaqBq_JzDNqbS6DSYG9yXiEt4Fw/edit#gid=1547391951)
